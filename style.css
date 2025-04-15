@@ -1,0 +1,33 @@
+* { user-select: non !important; 
+  transition:all .2s cubic-bezier(1,1.5,0,.95),
+    left .3s cubic-bezier(1,2,0,.95),
+    top .3s cubic-bezier(1,2,0,.95);}
+
+body {
+  margin: 0; /* Remove default body margins */
+}
+#draggable-element {
+  position: absolute; /* Needed for positioning */
+  border-radius: 100px;
+  border: 3px solid #cacbd6;
+/* Secondary */
+box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.15);
+
+  background-image: url("https://cdn.worldvectorlogo.com/logos/oreilly-2.svg"); /* Set background image */
+  background-size: 60px; /* Contain image within div */
+  background-repeat: no-repeat; /* Prevent image repeating */
+  background-position: 60% center; /* Center the image */
+  
+  width: 100px;
+  height: 100px;
+  cursor: move; /* Indicate draggable */
+  text-align: center;
+  line-height: 100px; /* Vertically center text */
+  user-select: none; /* Prevent text selection during drag */
+  
+  &:hover { transform:scale(1.05); background-color:#f7f7f7;}
+  &:active { border-color:black;} 
+}
+
+div {
+
