@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Video Lesson</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <style>
+  
+:root { 
+--base:#302F2A;
+--accent:#D30000;
+--accentalt:#0071EB;
+--color:hsl(from var(--base) h s 10%/1);
+--font:'Questrial', sans-serif;
+--shadow:0px 0px 0px 4px rgba(0,0,0,.07);
+  --shadow2:0px 0px 0px 4px rgba(0,0,0,.09);
+}
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  color:hsl(from var(--base) h s 20%/1);
+    transition:all .2s cubic-bezier(1,1.5,0,.95);
+    }
+
+::selection { background:var(--base); color:white;}
+
+/*-- reset traditional button style --*/
+button { border:none; background:inherit; color:inherit;}
+
+    body {
+      font-family: var(--font);
+      background:hsl(from var(--accentalt) h s 100%/1);
+      padding: 3rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .title {
+      font-weight: normal;
+      font-size:2rem;
+           
+    }
+
+    .subtitle {
+      font-style: italic;
+      font-weight: 600;
+       font-size:2rem;
+      vertical-align:center;
+    }
+
+    .header-controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 2rem auto;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: hsl(from var(--base) h s 80% /0.5);
+      border:1px solid var(--base);
+      border-radius: 8px;
+      &:hover { 
+         border:2px solid hsl(from var(--base) h s 80%/ 1);
+        background: hsl(from var(--accentalt) h s 99%/ .7);
+        cursor:pointer;
+        .play-button {  background: hsl(from var(--accentalt) h s 96%/ .7);
+          animation:pulse .4s ease-out infinite alternate;
+          .material-icons-round { color: var(--accentalt);}
+        }
+      }
+    }/*--End video-container */
+
+    .video-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+.material-icons-round { font-size:2.5rem;}
+
+    .play-button {
+      transform-origin:center;
+      width: 160px;
+      height: 160px;
+      background: hsl(from var(--base) h s 80%/ .7);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+     
+    }
+
+    .play-button .material-icons-round {
+      color: var(--base);
+      font-size:4rem;
+    }
+
+    .video-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+button.button, .menu-button {  
+      width: 60px;
+      height: 60px;
+      color: var(--color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:white;
+      border-radius:50px;
+      box-shadow: var(--shadow);
+      
+      &:hover { 
+        width:64px; height:64px;
+        box-shadow: var(--shadow2);
+      }
+}
+    
+    .prev-button {
+left:-10%;
+    }
+
+    .next-button {
+      right:-10%;
+    }
+
+.prev-button, .next-button {
+      width: 60px;
+      height: 60px;
+   display: flex;
+      align-items: center;
+      justify-content: center;
+  border-radius:50px;
+
+  &:hover {
+    background:white;
+    box-shadow: var(--shadow2);
+  }
+}
+
+/*---Makes the left and right navigation arrows icon bigger than all the other icons in the UI -*/
+.prev-button .material-icons-round, .next-button .material-icons-round { 
+font-size: 4rem;
+}
+
+    .menu-button { 
+      display:inline-flex;
+      margin-right:1rem;
+      vertical-align:-5px;
+    }
+    
+
+    .caption {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .video-nav {
+        font-size: 1.5rem;
+      }
+      .tooltip {
+        display: none;
+      }
+    }
+@keyframes pulse {
+  to { transform: scale(1.2);}
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="title">
+      <div class="menu-button">
+          <span class="material-icons-round">menu</span>
+       </div>Python | <span class="subtitle">Assign and Reassign Variables</span></h1>
+    <div class="header-controls">
+      <button class="button"><span class="material-icons-round">more_horiz</span></button>
+      <button class="button"><span class="material-icons-round">settings</span></button>
+    </div>
+  </div>
+
+  <div class="video-wrapper">
+    <div class="video-container">
+        <div class="video-nav prev-button">
+          <span class="material-icons-round">chevron_left</span>
+        </div>
+      <div class="video-content">
+        <div class="play-button">
+          <span class="material-icons-round">play_arrow</span>
+        </div>
+      </div>
+      <div class="video-nav next-button">
+          <span class="material-icons-round">chevron_right</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="caption">Introduction to Variables</div>
+ 
+</body>
+</html>
