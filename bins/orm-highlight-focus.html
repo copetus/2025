@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+#sbo-rt-content span.orm-highlight,
+#sbo-rt-content span.orm-annotation-highlight {
+  padding: 2px 2px;
+  position: relative;
+}
+
+#sbo-rt-content span.orm-highlight {
+  padding: 0;
+  background: #fac6ca;
+}
+
+span {
+  background: #FFEDB0;
+}
+
+/* this class is added programmatically when the first span of a highlight is in focus */
+/* it is removed on blur */
+#sbo-rt-content span.orm-annotation-highlight-focus {
+  
+}
+
+span {
+  padding: 0 4px;
+  border: 1px solid;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+body {
+  background: #f7f7f7;
+  margin: 5rem;
+}
+  </style>
+</head>
+<body>
+<p>
+    <span class="orm-annotation-highlight orm-annotation-highlight-focus" id="1f4f3690-e977-405b-868b-7b54af2920d4" data-annotation-id="1f4f3690-e977-405b-868b-7b54af2920d4" tabindex="0">When designing an algorithm, the primary challenge is to ensure it is
+    correct and works </span>
+    <em>
+        <span class="orm-annotation-highlight orm-annotation-highlight-focus" data-annotation-id="1f4f3690-e977-405b-868b-7b54af2920d4">for all input</span>
+    </em>
+    <span class="orm-annotation-highlight orm-annotation-highlight-focus" data-annotation-id="1f4f3690-e977-405b-868b-7b54af2920d4">. I will spend more time in </span>
+    <a data-type="xref" href="ch02.html#chap-2">
+        <span class="orm-annotation-highlight orm-annotation-highlight-focus" data-annotation-id="1f4f3690-e977-405b-868b-7b54af2920d4">Chapter&nbsp;2</span>
+    </a>
+    <span class="orm-annotation-highlight orm-annotation-highlight-focus" data-annotation-id="1f4f3690-e977-405b-868b-7b54af2920d4">
+    explaining how to analyze and compare the behavior of different algorithms
+    that solve the exact same problem. The field of algorithm analysis is tied
+    to the study of interesting, relevant problems that arise in real life.
+    While the mathematics of algorithms can be challenging to understand, I
+    will provide specific examples to always connect the abstract concepts with
+    real-world problems.</span>
+</p>
+<script>
+var x = document.querySelectorAll('span');
+x.forEach(function(e){
+  e.style.tabindex = 0;
+});
+</script>
+</body>
+</html>
