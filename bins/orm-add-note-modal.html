@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="ORM-Add Note modal – UCV">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css" rel="stylesheet">
+  <style>
+body { font-family:'Gilroy', sans-serif; display:flex; justify-content: center;
+background: #F7F7F7; padding-top: 64px;}
+
+
+.note-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 12px 12px 12px;
+  background-color: #fff;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+  width:330px;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+}
+
+.note-container:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+
+span[class^="material"] 
+/*-- selects elements with an atrribute starting with substring "material" --*/{
+  
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  margin-left:-5px;
+     
+}
+
+.note-title {
+ display:flex; align-items:center; 
+ font-size:18px; letter-spacing:0.09px;
+ opacity:.5}
+
+.close-button {
+  background:none;
+  border:none;
+  cursor: pointer;
+  position:relative;
+  bottom:4px;
+  left:12px;
+}
+
+.note-textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  resize: vertical;
+  min-height: 100px;
+  max-height: 500px;
+  overflow-y:auto;
+  box-sizing:border-box;
+  font-size:inherit;
+  font-family:inherit;
+  letter-spacing:.5px;
+}
+
+textarea:hover {
+  border:1px solid black;
+}
+
+.note-footer {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+button {font-size:1rem; cursor: pointer;  font-size:1rem;
+  text-decoration:underline;padding:0;
+  text-underline-offset: 4px; }
+
+.save-button {
+  color: #0071EB;
+  font-weight:600;
+  border:none;
+  /* -- background:#F3F2F5; --*/
+  background:none;
+  border-radius: 4px;
+  /*-- padding:4px 8px; --*/
+}
+
+.save-button:hover { 
+color:#0054B5 /*--b700--*/;
+}
+
+.cancel-button { background:none;
+border:none;
+    text-decoration:underline; color:#54595E;
+}
+
+.cancel-button:hover { color:#302F2A ;}
+  </style>
+</head>
+<body>
+<div class="note-container">
+  <div class="note-header">
+    <div class="note-title"><span class="material-icons-round">drag_indicator</span>Note</div>
+    <button class="close-button"><span class="material-icons-round">close</span></button>
+  </div>
+  <textarea class="note-textarea" placeholder="Start typing..."></textarea>
+  <div class="note-footer">
+    <button class="save-button">Save Note</button>
+    <button class="cancel-button">Cancel</button>
+  </div>
+</div>
+
+<script>
+const textarea = document.querySelector('.note-textarea');
+
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+});
+</script>
+</body>
+</html>

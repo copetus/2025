@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="ORM-UCV-Annotations-Color Options">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+:root {
+ --space-xs: 4px;  
+ --space-sm: 8px;
+ --space-md: 16px;
+ --space-lg: 24px;
+  
+}
+
+* {box-sizing:border-box;}
+
+body { display:flex; justify-content:center;
+height:90vh; align-items:center;    
+}
+
+div { display:flex; justify-content:center; align-items:center; gap:var(--space-sm);
+
+  background:#3D3B49;
+  padding:var(--space-sm) var(--space-sm);
+  width:min-content;
+  border-radius:var(--space-xs);
+}
+
+div:hover { background:black;}
+
+span { 
+  width:var(--space-md);
+  height:var(--space-md); 
+  border-radius:calc(24 / 2); background: #cacdb6; border-radius:var(--space-md);
+  outline-offset:calc(2px);
+}
+
+span.option1 {background:#FFEDB0;}
+span.option2 {background:#14D4D8;}
+span.option3 {background:#FF7593;}
+
+
+span:hover:not(span.active) { 
+  
+  transform:scale(1.1);
+  outline:2px solid rgba(255,255,255,.5);
+  cursor:pointer;
+}
+
+span.active { 
+  transform:scale(.9);
+  outline:2px solid white;
+  outline-offset:4px;
+}
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+var x = document.getElementsByTagName('div')[0]; // Assuming you want the first div
+
+function creator(elementType, parent, className) {
+  const ele = document.createElement(elementType);
+  ele.classList.add(className);
+  parent.append(ele);
+
+  ele.addEventListener('click', (e) => {
+    const activeElements = document.querySelectorAll('.active');
+
+    if (activeElements.length > 0) {
+      activeElements.forEach(element => {
+        if (element !== e.target) {
+          element.classList.remove('active');
+        }
+      });
+    }
+
+    e.target.classList.add('active');
+  });
+
+  return ele; // Return the created element
+}
+
+const option1 = creator('span', x, "option1");
+option1.classList.add("active");
+const option2 = creator('span', x, "option2");
+const option3 = creator('span', x, "option3");
+
+console.log(option1.classList.contains('active')); // This will now be false initially
+  </script>
+</body>
+</html>
