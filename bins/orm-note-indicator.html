@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="[ORM–Note indicator]">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+* { box-sizing:border-box; font-family:sans-serif; }
+
+body { background:white; padding:32px; display:flex;
+flex-flow:column wrap; }
+
+span:hover{ border: 1px solid #423300; }
+span:hover::before { border:inherit; opacity:1; }
+
+span {
+  border-radius:4px;
+  background:#FFEDB0; position:relative; }
+span::before { content:'=';
+  border-radius:4px 4px 0px 4px;
+  padding:.05rem .3rem;
+  background:inherit;
+  position:absolute;
+  bottom:1rem; left:-1rem;
+  opacity:.5;
+}
+
+span.active { border:2px solid #0071EB; }
+span.active::before { border:2px solid blue; }
+  </style>
+</head>
+<body>
+  <p><span>Cognitive dissonance</span> is the uncomfortable feeling you get when you have 2 <span>conflicting ideas</span></p>
+  
+  <p>In new research by <span>Vincent Van Veen (2009)</span> had people “argue” that the fMRI scan experience was pleasant (it’s not). When “forced” to make statements that the experience was pleasant, certain parts of the brain lit up (the dorsal anterior cingulate cortex and the anterior insular cortex). <span>The more these regions were activated, the more the participant would claim that he really did think the fMRI was pleasant.
+  </p>
+
+  <script>
+function handleSpanClick(event) {
+  const clickedSpan = event.target;
+  const activeSpan = document.querySelector('.active');
+
+  if (clickedSpan !== activeSpan) {
+    if (activeSpan) {
+      activeSpan.classList.remove('active');
+    }
+    clickedSpan.classList.add('active');
+  }
+}
+
+const spans = document.querySelectorAll('span');
+spans.forEach(span => span.addEventListener('click', handleSpanClick));
+document.addEventListener('click', handleSpanClick);
+  </script>
+</body>
+</html>

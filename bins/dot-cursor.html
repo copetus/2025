@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Dot Cursor">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    div {
+      position: absolute;
+      background: #000;
+      opacity: .09;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      top: 0;
+      left: 0;
+      animation: pulse .5s cubic-bezier(.51,0,0.4,.5) alternate infinite;
+      transform: translate(-50%,-50%) scale(1);
+    }
+
+    div.active {
+      animation: bounce .5s ease;
+    }
+
+    @keyframes bounce {
+      0% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(2); opacity: 0; }
+    }
+
+    @keyframes pulse {
+      from { width: 50px; height: 50px; }
+      to { width: 60px; height: 60px; }
+    }
+    /*---end keyframes--*/
+
+    h2 {
+      font-family: circular std;
+      text-align: center;
+      margin: 0;
+      color: #000;
+      opacity: .08;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 500%;
+    }
+
+    body { background: #eee; }
+
+    * { cursor: none; }
+  </style>
+</head>
+<body>
+  <div></div>
+  <h2>hello</h2>
+  <script>
+    const bob = document.querySelector('div');
+    const inner = document.querySelector('h2');
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let ballX = 0;
+    let ballY = 0;
+
+    let speed = .2;  // how fast ball catches up to mouse pointer
+
+    function myAnimate() {
+      let distX = mouseX - ballX;
+      let distY = mouseY - ballY;
+
+      ballX = ballX + (distX * speed);
+      ballY = ballY + (distY * speed);
+
+      bob.style.left = ballX + 'px';
+      bob.style.top = ballY + 'px';
+
+      var calca = [mouseX, ballX, distY];
+      var final = calca.map(function(e) {
+        return e.toFixed();
+      });
+
+      inner.innerHTML = final;
+
+      requestAnimationFrame(myAnimate);
+    }
+
+    myAnimate();
+
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.pageX;
+      mouseY = e.pageY;
+    });
+
+    document.addEventListener('click', function(e) {
+      e.preventDefault();
+      bob.classList.remove('active');
+      //some rando comment
+      void bob.offsetWidth;
+      bob.classList.add('active');
+    }, false);
+  </script>
+</body>
+</html>
